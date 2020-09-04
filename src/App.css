@@ -23,19 +23,22 @@
     width: 30px;
 }
 
-.nav {
+.navbar {
     background-image: linear-gradient(rgba(34, 42, 69, 0.96), rgba(34, 42, 69, 0.96));
     grid-area: n;
+}
+
+.navbar nav{
     display: flex;
     flex-direction: column;
 }
 
-.nav a{
+.navbar a{
     text-decoration: none;
     color: white;
 }
 
-.nav a:hover, .nav a:active{
+.navbar a:hover, .nav a:active{
     color: #009be5;
 }
 
