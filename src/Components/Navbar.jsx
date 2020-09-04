@@ -1,9 +1,9 @@
 import React from "react";
-
+import '../App.css';
 
 const Navbar = () => {
     return (
-        <div className="navbar">
+        <div className="nav">
             <nav>
                 <a href="#">Profile</a>
                 <a href="#">Messages</a>
