@@ -13,6 +13,6 @@
     color: white;
 }
 
-.nav a:hover, .nav a:active{
+.nav a.active{
     color: #009be5;
 }
