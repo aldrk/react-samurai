@@ -1,0 +1,18 @@
+.nav {
+    background-image: linear-gradient(rgba(34, 42, 69, 0.96), rgba(34, 42, 69, 0.96));
+    grid-area: n;
+}
+
+.nav nav{
+    display: flex;
+    flex-direction: column;
+}
+
+.nav a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav a:hover, .nav a:active{
+    color: #009be5;
+}

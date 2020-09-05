@@ -3,7 +3,6 @@
     padding: 0;
 }
 
-
 .app-wrapper {
     display: grid;
     margin: 0 auto;
@@ -14,41 +13,3 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.header {
-    width: 100%;
-    grid-area: h;
-}
-
-.header img{
-    width: 30px;
-}
-
-.nav {
-    background-image: linear-gradient(rgba(34, 42, 69, 0.96), rgba(34, 42, 69, 0.96));
-    grid-area: n;
-}
-
-.nav nav{
-    display: flex;
-    flex-direction: column;
-}
-
-.nav a{
-    text-decoration: none;
-    color: white;
-}
-
-.nav a:hover, .nav a:active{
-    color: #009be5;
-}
-
-.content {
-    background-color: #009be5;
-    grid-area: c;
-    color: white;
-}
-
-.content img{
-    width: 100%;
-    height: 500px;
-}
