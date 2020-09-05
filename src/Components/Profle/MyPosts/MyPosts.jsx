@@ -12,8 +12,8 @@ const MyPosts = () => {
                 <button>Add</button>
                 <button>Delete</button>
             </div>
-            <Post />
-            <Post />
+            <Post message={'Hi I`m learning react'} likeCount={5}/>
+            <Post message={'Is it difficult?'} likeCount={1}/>
         </div>
     );
 }
