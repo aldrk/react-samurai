@@ -1,0 +1,68 @@
+.posts{
+    width: 30%;
+    padding: 15px;
+}
+
+.postsHeader{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.newPost{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.newPost textarea{
+    border: none;
+    padding: 5px;
+    border-radius: 15px;
+    resize: none;
+    box-shadow: -1px 5px 33px 9px rgba(34, 42, 69, 0.96);
+    transition: box-shadow 1s;
+    margin-bottom: 30px;
+}
+
+.newPost textarea:focus{
+    transition: box-shadow 0.75s;
+    box-shadow: none;
+    outline: none;
+}
+
+.newPost textarea:hover{
+    transition: box-shadow 0.75s;
+    box-shadow: none;
+}
+
+
+.newPostButtons{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.newPostButtons button{
+    background-color: #ffffff;
+    color: rgba(34, 42, 69, 0.96);
+    cursor: pointer;
+    width: 25%;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 10px rgba(0,0,0,0.45);
+    transition: box-shadow, color, background-color 0.5s;
+}
+
+.newPostButtons button:focus{
+    outline: none;
+}
+
+.newPostButtons button:hover{
+    color: white;
+    background-color: rgba(34, 42, 69, 0.96);
+    box-shadow: none;
+    transition: box-shadow, color, background-color 0.5s;
+}
