@@ -8,16 +8,20 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
+import Sidebar from "./Components/Sidebar/Sidebar";
 
 const App = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar/>
+                <div>
+                    <Navbar/>
+                    <Sidebar state={props.state.Sidebar}/>
+                </div>
                 <div className="app-wrapper-content">
-                    <Route exact path='/Dialogs' render={() => <Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
-                    <Route path='/Profile' component={() => <Profile posts={props.posts}/>}/>
+                    <Route exact path='/Dialogs' render={() => <Dialogs state={props.state.DialogsPage}/>}/>
+                    <Route path='/Profile' component={() => <Profile state={props.state.ProfilePage}/>}/>
                     <Route path='/News' component={News}/>
                     <Route path='/Music' component={Music}/>
                     <Route path='/Settings' component={Settings}/>

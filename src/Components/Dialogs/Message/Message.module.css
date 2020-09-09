@@ -4,9 +4,14 @@
 }
 
 .message{
-
+    margin: 10px;
+    width: 70%;
 }
 
-.message{
+.message.left{
+    align-self: flex-start;
+}
 
+.message.right{
+    align-self: flex-end;
 }

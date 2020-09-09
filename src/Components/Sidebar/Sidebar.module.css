@@ -1,0 +1,6 @@
+.sidebar{
+    display: flex;
+    justify-content: space-around;
+    background-image: linear-gradient(rgba(34, 42, 69, 0.96), rgba(34, 42, 69, 0.96));
+    padding: 100px 15px 15px 15px;
+}

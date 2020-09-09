@@ -12,13 +12,6 @@
 }
 
 .messages{
-    padding: 15px;
-}
-
-.message{
-
-}
-
-.message{
-
+    display: flex;
+    flex-direction: column;
 }
