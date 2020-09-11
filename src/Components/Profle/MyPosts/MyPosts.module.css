@@ -17,10 +17,11 @@
 
 
 .newPost textarea{
+    resize: none;
     border: none;
     padding: 5px;
     border-radius: 15px;
-    resize: none;
+    height: 100px;
     box-shadow: -1px 5px 33px 9px rgba(34, 42, 69, 0.96);
     transition: box-shadow 1s;
     margin-bottom: 30px;
