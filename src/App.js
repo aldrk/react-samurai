@@ -11,20 +11,24 @@ import Settings from "./Components/Settings/Settings";
 import Sidebar from "./Components/Sidebar/Sidebar";
 
 const App = (props) => {
+    console.log(props.state)
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <div>
                     <Navbar/>
-                    <Sidebar state={props.state.Sidebar}/>
+                    <Sidebar state={ props.state.Sidebar } dispatch ={ props.dispatch }/>
                 </div>
                 <div className="app-wrapper-content">
-                    <Route exact path='/Dialogs' render={() => <Dialogs state={props.state.DialogsPage}/>}/>
-                    <Route path='/Profile' render={() => <Profile state={props.state.ProfilePage} addPost={props.addPost} changeNewPostText={props.changeNewPostText}/>}/>
-                    <Route path='/News' component={News}/>
-                    <Route path='/Music' component={Music}/>
-                    <Route path='/Settings' component={Settings}/>
+                    <Route exact path='/Dialogs' render={() => <Dialogs state={ props.state.DialogsPage }
+                                                                        dispatch={ props.dispatch }/>}/>
+                    <Route path='/Profile' render={() => <Profile
+                                                                state={ props.state.ProfilePage }
+                                                                dispatch={ props.dispatch }/>}/>
+                    <Route path='/News' render={ News }/>
+                    <Route path='/Music' render={ Music }/>
+                    <Route path='/Settings' render={ Settings }/>
                 </div>
             </div>
         </BrowserRouter>

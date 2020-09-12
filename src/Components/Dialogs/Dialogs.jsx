@@ -7,16 +7,17 @@ import NewMessage from "./NewMessage/NewMessage";
 
 
 const Dialogs = (props) => {
-    let dialogsComponents = props.state.dialogs.map( d => <DialogItem id={d.id} name={d.name}/>);
-    let messageComponents = props.state.messages.map( m => <Message id={m.id} message={m.message}/>)
+    let dialogsComponents = props.state.dialogs.map( d => <DialogItem id={ d.id } name={ d.name }/>);
+    let messageComponents = props.state.messages.map( m => <Message id={ m.id } message={ m.message }/>)
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
+        <div className={ s.dialogs }>
+            <div className={ s.dialogsItems }>
                 { dialogsComponents }
             </div>
-            <div className={s.messages}>
+            <div className={ s.messages }>
                 { messageComponents }
-                <NewMessage />
+                <NewMessage newMessageText={ props.state.newMessageText }
+                            dispatch={ props.dispatch }/>
             </div>
         </div>
     );
