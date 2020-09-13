@@ -1,9 +1,10 @@
 .dialogs{
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .dialogsItems{
+    width: 17%;
     padding: 15px;
 }
 
@@ -12,6 +13,52 @@
 }
 
 .messages{
+    width: 80%;
     display: flex;
     flex-direction: column;
+}
+
+.newMessage{
+    margin: 20px auto 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.newMessage textarea{
+    padding: 5px;
+    border-radius: 10px;
+    width: 350px;
+    height: 50px;
+    resize: none;
+    border: none;
+}
+
+.newMessage textarea:focus{
+    outline: none;
+}
+
+.newMessage button{
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    background-color: white;
+    color: rgba(34, 42, 69, 0.96);
+    margin-left: 20px;
+    align-self: center;
+    border: none;
+    border-radius: 15px;
+    box-shadow: -2px -3px 20px 11px rgba(10,115,165,1);
+    transition: box-shadow, color, background-color 0.5s;
+}
+
+.newMessage button:focus{
+    outline: none;
+}
+
+.newMessage button:hover{
+    background-color: rgba(34, 42, 69, 0.96);
+    color: white;
+    box-shadow: none;
+    transition: box-shadow, color, background-color 0.5s;
 }
