@@ -1,0 +1,59 @@
+.users{
+    margin-top: 10px;
+}
+
+.user{
+    border-radius: 20px;
+    padding: 10px;
+    width: 60%;
+    background-color: rgba(34, 42, 69, 0.7);
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 0 30px;
+    font-size: 18px;
+}
+
+.avatarAndButtons{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10%;
+}
+
+.avatarAndButtons img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.avatarAndButtons button{
+    width: 80px;
+    height: 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.avatarAndButtons button:focus{
+    outline: none;
+}
+
+.mainInfoWrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.mainInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.status{
+
+}

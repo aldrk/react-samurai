@@ -4,7 +4,8 @@ import s from './MyPosts.module.css'
 
 const MyPosts = (props) => {
 	let postsComponents = props.posts.map(p => <Post postMessage={p.postMessage}
-													 likesCount={p.likesCount}/>);
+													 likesCount={p.likesCount}
+												  	 key={p.id}/>);
 	const addPost = () => {
 		props.addPost();
 	}

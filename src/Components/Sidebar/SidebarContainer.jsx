@@ -1,5 +1,4 @@
-import React from "react";
-import s from './Sidebar.module.css';
+//import s from './Sidebar.module.css';
 import Sidebar from "./Sidebar";
 import {connect} from "react-redux";
 
