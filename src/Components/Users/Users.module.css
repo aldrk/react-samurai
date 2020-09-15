@@ -2,6 +2,27 @@
     margin: 20px 0 20px 0;
 }
 
+.pagination{
+    display: flex;
+    align-items: center;
+}
+
+.page {
+    display: block;
+    width: 38px;
+    height: 30px;
+    border-radius: 21px;
+    padding-top: 10px;
+    background-color: #222a45;
+    margin: 0 10px 0 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.page.active{
+    color: gold;
+}
+
 .user{
     border-radius: 20px;
     padding: 10px;

@@ -4,17 +4,21 @@ import * as axios from 'axios';
 import defaultAvatar from '../../assets/default-avatar.png'
 
 class Users extends React.Component{
-	constructor(props) {
-		super(props);
-		axios
-			.get('https://social-network.samuraijs.com/api/1.0/users')
-			.then(response => {
-				this.props.setUsers(response.data.items)
-			})
-	}
-
 	render() {
+		let pagesCount = Math.ceil(this.props.totalUsersCount/ this.props.pageSize)/100;
+		let pages = [];
+		for (let i = 1; i <= pagesCount; i++){
+			pages.push(i);
+		}
+
 		return <div className={styles.users}>
+			<div className={styles.pagination}>
+				{
+					pages.map(p => {
+						return <span key={p} className={`${styles.page} ${(p === this.props.currentPage) && styles.active}`} onClick={() => {this.onChangingPage(p)}}>{p}</span>
+					})
+				}
+			</div>
 			{
 				this.props.users.map(user => <div className={styles.user} key={user.id}>
 						<div className={styles.avatarAndButtons}>
@@ -43,6 +47,24 @@ class Users extends React.Component{
 				)
 			}
 		</div>
+	}
+
+	componentDidMount() {
+		axios
+			.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}page=1`)
+			.then(response => {
+				this.props.setUsers(response.data.items);
+				this.props.setTotalUsersCount(response.data.totalCount);
+			})
+	};
+
+	onChangingPage(pageNumber){
+		axios
+			.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`)
+			.then(response => {
+				this.props.setUsers(response.data.items);
+				this.props.setCurrentPage(pageNumber)
+			})
 	}
 }
 
