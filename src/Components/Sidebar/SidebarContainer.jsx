@@ -1,4 +1,4 @@
-//import s from './Sidebar.module.css';
+//import styles from './Sidebar.module.css';
 import Sidebar from "./Sidebar";
 import {connect} from "react-redux";
 

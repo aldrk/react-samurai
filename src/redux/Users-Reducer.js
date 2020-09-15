@@ -3,11 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 
 const initialState = {
-	users: [
-		{id: 1, imgUrl: 'https://sun9-45.userapi.com/c855124/v855124021/115a15/cjAXnKlUJpM.jpg', followed: true, fullName: 'Kirill', status: 'YA DURAK', location: {city: 'Zelenograd', country: 'Russia'}},
-		{id: 2, imgUrl: 'https://sun9-45.userapi.com/c855124/v855124021/115a15/cjAXnKlUJpM.jpg', followed: false, fullName: 'Zhenya', status: 'Oh sheet', location: {city: 'Lvov', country: 'Ukraine'}},
-		{id: 3, imgUrl: 'https://sun9-45.userapi.com/c855124/v855124021/115a15/cjAXnKlUJpM.jpg', followed: true, fullName: 'Sasha', status: 'Learning react', location: {city: 'Voronezh', country: 'Russia'}}
-	]
+	users: []
 }
 
 const usersReducer = (state = initialState, action) => {
