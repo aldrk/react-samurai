@@ -1,11 +1,13 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
+const SET_PROFILE_INFO = 'SET-PROFILE-INFO';
 
 let initialState = {
 	posts: [
 		{id: 1, postMessage: 'Hi I`m learning react', likesCount: 5},
 		{id: 2, postMessage: 'Is it difficult?', likesCount: 1},
 	],
+	profile: null,
 	newPostText: ''
 }
 
@@ -30,6 +32,12 @@ const profileReducer = (state = initialState, action) => {
 				newPostText: action.newPostText
 			};
 		}
+		case SET_PROFILE_INFO: {
+			return {
+				...state,
+				profile: action.profile
+			}
+		}
 		default:
 			return state;
 	}
@@ -45,5 +53,12 @@ export const changeNewPostTextActionCreator = (newPostText) => {
 		newPostText: newPostText
 	};
 };
+
+export const setProfileInfo = (profile) => {
+	return {
+		type: SET_PROFILE_INFO,
+		profile
+	}
+}
 
 export default profileReducer;
