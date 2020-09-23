@@ -4,24 +4,26 @@ const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+const TOGGLE_FETCHING_FOLLOWING = 'TOGGLE-FETCHING-FOLLOWING';
 
 const initialState = {
 	users: [],
 	pageSize: 4,
 	currentPage: 1,
 	totalUsersCount: 0,
-	isFetching: false
+	isFetching: false,
+	isFetchingFollowing: []
 }
 
 const usersReducer = (state = initialState, action) => {
-	switch (action.type){
+	switch (action.type) {
 		case FOLLOW:
 			return {
-					...state,
-					users: state.users.map(user => {
-						if (user.id === action.userId) return {...user, followed: true};
-						return user;
-					})
+				...state,
+				users: state.users.map(user => {
+					if (user.id === action.userId) return {...user, followed: true};
+					return user;
+				})
 			}
 		case UNFOLLOW:
 			return {
@@ -37,12 +39,12 @@ const usersReducer = (state = initialState, action) => {
 				users: [...action.users]
 			}
 		case SET_CURRENT_PAGE:
-			return  {
+			return {
 				...state,
 				currentPage: action.page
 			}
 		case SET_TOTAL_USERS_COUNT:
-			return  {
+			return {
 				...state,
 				totalUsersCount: action.count
 			}
@@ -51,6 +53,21 @@ const usersReducer = (state = initialState, action) => {
 				...state,
 				isFetching: action.isFetching
 			}
+		case TOGGLE_FETCHING_FOLLOWING: {
+			const deleteUserFollowing = (userId) => {
+				return {
+					...state,
+					isFetchingFollowing: state.isFetchingFollowing.filter(u => u !== userId)
+				}
+			}
+			const addUserFollowing = (userId) => {
+				return {
+					...state,
+					isFetchingFollowing: [...state.isFetchingFollowing, userId]
+				}
+			}
+			return action.status ? addUserFollowing(action.userId) : deleteUserFollowing(action.userId)
+		}
 		default:
 			return state;
 	}
@@ -90,6 +107,14 @@ export const toggleIsFetching = (isFetching) => {
 	return {
 		type: TOGGLE_IS_FETCHING,
 		isFetching
+	}
+}
+
+export const toggleIsFetchingFollowing = (userId, status) => {
+	return {
+		type: TOGGLE_FETCHING_FOLLOWING,
+		status,
+		userId
 	}
 }
 

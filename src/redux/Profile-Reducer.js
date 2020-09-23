@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
 const SET_PROFILE_INFO = 'SET-PROFILE-INFO';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 let initialState = {
 	posts: [
@@ -8,7 +9,8 @@ let initialState = {
 		{id: 2, postMessage: 'Is it difficult?', likesCount: 1},
 	],
 	profile: null,
-	newPostText: ''
+	newPostText: '',
+	isFetching: false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -38,6 +40,12 @@ const profileReducer = (state = initialState, action) => {
 				profile: action.profile
 			}
 		}
+		case TOGGLE_IS_FETCHING: {
+			return {
+				...state,
+				isFetching: action.isFetching
+			}
+		}
 		default:
 			return state;
 	}
@@ -58,6 +66,13 @@ export const setProfileInfo = (profile) => {
 	return {
 		type: SET_PROFILE_INFO,
 		profile
+	}
+}
+
+export const toggleIsFetching = (isFetching) => {
+	return{
+		type: TOGGLE_IS_FETCHING,
+		isFetching
 	}
 }
 

@@ -3,11 +3,11 @@ import Users from "./Users";
 import {
 	follow, setCurrentPage, setTotalUsersCount,
 	setUsers, toggleIsFetching,
-	unfollow
+	unfollow, toggleIsFetchingFollowing
 } from '../../redux/Users-Reducer';
 import React from 'react';
-import * as axios from "axios";
 import Preloader from "../Common/Preloader/Preloader.jsx";
+import {usersContainerAPI} from "../../Api/usersAPI";
 
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
 		pageSize: state.usersPage.pageSize,
 		currentPage: state.usersPage.currentPage,
 		totalUsersCount: state.usersPage.totalUsersCount,
-		isFetching: state.usersPage.isFetching
+		isFetching: state.usersPage.isFetching,
+		isFetchingFollowing: state.usersPage.isFetchingFollowing
 	};
 };
 
@@ -50,33 +51,32 @@ class UsersAPIContainer extends React.Component {
 			pageSize={this.props.pageSize}
 			currentPage={this.props.currentPage}
 			users={this.props.users}
+			isFetchingFollowing={this.props.isFetchingFollowing}
 			onChangingPage={this.onChangingPage}
 			unfollow={this.props.unfollow}
-			follow={this.props.follow}/>)
+			follow={this.props.follow}
+			toggleIsFetchingFollowing={this.props.toggleIsFetchingFollowing}
+		/>)
 	}
 	componentDidMount() {
 		this.props.toggleIsFetching(true);
-		axios
-			.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
-			.then(response => {
-				this.props.toggleIsFetching(false);
-				this.props.setUsers(response.data.items);
-				this.props.setTotalUsersCount(response.data.totalCount);
-			})
+		usersContainerAPI(this.props.pageSize, this.props.currentPage).then(data => {
+			this.props.toggleIsFetching(false);
+			this.props.setUsers(data.items);
+			this.props.setTotalUsersCount(data.totalCount);
+		})
 	}
 
 	onChangingPage = (page) => {
 		this.props.toggleIsFetching(true);
-		axios
-			.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`)
-			.then(response => {
-				this.props.toggleIsFetching(false);
-				this.props.setUsers(response.data.items);
-				this.props.setCurrentPage(page);
-			})
+		usersContainerAPI(this.props.pageSize, page).then(data => {
+			this.props.toggleIsFetching(false);
+			this.props.setUsers(data.items);
+			this.props.setCurrentPage(page);
+		})
 	}
 }
 
-const UsersContainer = connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching})(UsersAPIContainer)
+const UsersContainer = connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFetchingFollowing})(UsersAPIContainer)
 
 export default UsersContainer;
