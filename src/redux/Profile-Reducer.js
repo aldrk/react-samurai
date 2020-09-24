@@ -11,7 +11,7 @@ let initialState = {
 	profile: null,
 	newPostText: '',
 	isFetching: false
-}
+};
 
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -21,7 +21,7 @@ const profileReducer = (state = initialState, action) => {
 				id: state.posts[state.posts.length] + 1,
 				postMessage: state.newPostText,
 				likesCount: 0
-			}
+			};
 			return {
 				...state,
 				posts: [...state.posts, newPost],
@@ -38,13 +38,13 @@ const profileReducer = (state = initialState, action) => {
 			return {
 				...state,
 				profile: action.profile
-			}
+			};
 		}
 		case TOGGLE_IS_FETCHING: {
 			return {
 				...state,
 				isFetching: action.isFetching
-			}
+			};
 		}
 		default:
 			return state;
@@ -66,14 +66,14 @@ export const setProfileInfo = (profile) => {
 	return {
 		type: SET_PROFILE_INFO,
 		profile
-	}
-}
+	};
+};
 
 export const toggleIsFetching = (isFetching) => {
 	return{
 		type: TOGGLE_IS_FETCHING,
 		isFetching
-	}
-}
+	};
+};
 
 export default profileReducer;

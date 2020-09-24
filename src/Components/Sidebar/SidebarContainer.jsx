@@ -1,6 +1,6 @@
 //import styles from './Sidebar.module.css';
-import Sidebar from "./Sidebar";
-import {connect} from "react-redux";
+import Sidebar from './Sidebar';
+import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
 	return {
@@ -8,6 +8,6 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const SidebarContainer = connect(mapStateToProps)(Sidebar)
+const SidebarContainer = connect(mapStateToProps)(Sidebar);
 
 export default SidebarContainer;

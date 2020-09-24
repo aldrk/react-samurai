@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 //import styles from './News.module.css';
 
 const News = (props) => {
@@ -7,6 +7,6 @@ const News = (props) => {
             News
         </div>
     );
-}
+};
 
 export default News;

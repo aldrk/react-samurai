@@ -1,15 +1,15 @@
-import React from "react";
-import "./App.css";
-import Navbar from "./Components/Navbar/Navbar";
-import {Route} from "react-router-dom";
-import News from "./Components/News/News";
-import Music from "./Components/Music/Music";
-import Settings from "./Components/Settings/Settings";
-import ProfileContainer from "./Components/Profle/ProfileContainer";
-import SidebarContainer from "./Components/Sidebar/SidebarContainer";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import UsersContainer from "./Components/Users/UsersContainer";
-import HeaderContainer from "./Components/Header/HeaderContainer";
+import React from 'react';
+import './App.css';
+import Navbar from './Components/Navbar/Navbar';
+import {Route} from 'react-router-dom';
+import News from './Components/News/News';
+import Music from './Components/Music/Music';
+import Settings from './Components/Settings/Settings';
+import ProfileContainer from './Components/Profle/ProfileContainer';
+import SidebarContainer from './Components/Sidebar/SidebarContainer';
+import DialogsContainer from './Components/Dialogs/DialogsContainer';
+import UsersContainer from './Components/Users/UsersContainer';
+import HeaderContainer from './Components/Header/HeaderContainer';
 
 const App = () => {
     return (
@@ -29,6 +29,6 @@ const App = () => {
                 </div>
             </div>
     );
-}
+};
 
 export default App;

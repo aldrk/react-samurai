@@ -15,7 +15,7 @@ let initialState = {
 		{id: 3, message: 'Me too'}
 	],
 	newMessageText: ''
-}
+};
 
 const dialogReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -23,12 +23,12 @@ const dialogReducer = (state = initialState, action) => {
 			let newMessage = {
 				id: state.messages[state.messages.length] + 1,
 				message: state.newMessageText
-			}
+			};
 			return {
 				...state,
 				messages: [...state.messages, newMessage],
 				newMessageText: ''
-			}
+			};
 		}
 		case CHANGE_NEW_MESSAGE_TEXT:{
 			return {

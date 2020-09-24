@@ -1,6 +1,6 @@
-import React from "react";
-import Post from "./Post/Post";
-import s from './MyPosts.module.css'
+import React from 'react';
+import Post from './Post/Post';
+import s from './MyPosts.module.css';
 
 const MyPosts = (props) => {
 	let postsComponents = props.posts.map(p => <Post postMessage={p.postMessage}
@@ -8,12 +8,12 @@ const MyPosts = (props) => {
 												  	 key={p.id}/>);
 	const addPost = () => {
 		props.addPost();
-	}
+	};
 
 	const changeNewPostText = (event) => {
 		let newPostText = event.target.value;
 		props.changeNewPostText(newPostText);
-	}
+	};
 
 	return (
 		<div className={s.posts}>
@@ -33,6 +33,6 @@ const MyPosts = (props) => {
 			{postsComponents}
 		</div>
 	);
-}
+};
 
 export default MyPosts;

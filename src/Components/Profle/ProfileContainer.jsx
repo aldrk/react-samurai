@@ -1,17 +1,17 @@
-import React from "react";
-import Profile from "./Profile";
-import {connect} from "react-redux";
-import {setProfileInfo, toggleIsFetching} from "../../redux/Profile-Reducer";
-import {withRouter} from "react-router-dom";
-import Preloader from "../Common/Preloader/Preloader";
+import React from 'react';
+import Profile from './Profile';
+import {connect} from 'react-redux';
+import {setProfileInfo, toggleIsFetching} from '../../redux/Profile-Reducer';
+import {withRouter} from 'react-router-dom';
+import Preloader from '../Common/Preloader/Preloader';
 import {profileAPI} from '../../Api/profileAPI';
 
 class ProfileAPIContainer extends React.Component{
 	render() {
 		return this.props.isFetching
 				? <Preloader/>
-				: <Profile profile={this.props.profile}/>
-	}
+				: <Profile profile={this.props.profile}/>;
+	};
 
 	componentDidMount() {
 		let userId = this.props.match.params.userId;
@@ -25,7 +25,7 @@ class ProfileAPIContainer extends React.Component{
 			})
 			.catch(error => {
 				this.props.toggleIsFetching(false);
-				console.log(error)
+				console.log(error);
 			})
 	}
 }
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 		profile: state.profilePage.profile,
 		isFetching: state.profilePage.isFetching
 	};
-}
+};
 
 const ProfileWithRouterContainer = withRouter(ProfileAPIContainer);
 

@@ -1,9 +1,9 @@
-import {combineReducers, createStore} from "redux";
-import profileReducer from "./Profile-Reducer";
-import dialogReducer from "./Dialog-Reducer";
-import sidebarReducer from "./Sidebar-Reducer";
-import usersReducer from "./Users-Reducer";
-import authReducer from "./Auth-Reducer";
+import {combineReducers, createStore} from 'redux';
+import profileReducer from './Profile-Reducer';
+import dialogReducer from './Dialog-Reducer';
+import sidebarReducer from './Sidebar-Reducer';
+import usersReducer from './Users-Reducer';
+import authReducer from './Auth-Reducer';
 
 let reducers = combineReducers({
 	profilePage: profileReducer,
@@ -11,6 +11,6 @@ let reducers = combineReducers({
 	sidebar: sidebarReducer,
 	usersPage: usersReducer,
 	auth: authReducer
-})
+});
 
 export let store = createStore(reducers);
