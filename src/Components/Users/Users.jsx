@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Users.module.css';
 import defaultAvatar from '../../assets/images/default-avatar.png'
 import {NavLink} from 'react-router-dom';
-import {usersAPI} from '../../Api/usersAPI';
 
 const Users = (props) => {
 	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize) / 100;
@@ -10,23 +9,11 @@ const Users = (props) => {
 	for (let i = 1; i <= pagesCount; i++) {
 		pages.push(i);
 	}
-	const follow = (id) => {
-		props.toggleIsFetchingFollowing(id, true);
-		usersAPI.followUser(id).then(resultCode => {
-			props.toggleIsFetchingFollowing(id ,false);
-			if (resultCode === 0) {
-				props.follow(id)
-			}
-		});
+	const follow = (userId) => {
+		props.followThunk(userId);
 	};
-	const unfollow = (id) => {
-		props.toggleIsFetchingFollowing(id, true);
-		usersAPI.unfollowUser(id).then(resultCode => {
-			props.toggleIsFetchingFollowing(id, false);
-			if (resultCode === 0) {
-				props.unfollow(id)
-			}
-		});
+	const unfollow = (userId) => {
+		props.unfollowThunk(userId);
 	};
 	return (<div className={styles.users}>
 			<div className={styles.pagination}>

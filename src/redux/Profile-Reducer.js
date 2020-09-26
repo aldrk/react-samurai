@@ -1,3 +1,5 @@
+import {profileAPI} from '../Api/profileAPI';
+
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
 const SET_PROFILE_INFO = 'SET-PROFILE-INFO';
@@ -51,11 +53,11 @@ const profileReducer = (state = initialState, action) => {
 	}
 };
 
-export const addPostActionCreator = () => {
+export const addPost = () => {
 	return {type: ADD_POST};
 };
 
-export const changeNewPostTextActionCreator = (newPostText) => {
+export const changeNewPostText = (newPostText) => {
 	return {
 		type: CHANGE_NEW_POST_TEXT,
 		newPostText: newPostText
@@ -70,10 +72,23 @@ export const setProfileInfo = (profile) => {
 };
 
 export const toggleIsFetching = (isFetching) => {
-	return{
+	return {
 		type: TOGGLE_IS_FETCHING,
 		isFetching
 	};
+};
+
+export const getProfile = (userId) => (dispatch) => {
+	dispatch(toggleIsFetching(true));
+	profileAPI(userId)
+		.then(data => {
+			dispatch(toggleIsFetching(false));
+			dispatch(setProfileInfo(data));
+		})
+		.catch(error => {
+			dispatch(toggleIsFetching(false));
+			console.log(error);
+		})
 };
 
 export default profileReducer;

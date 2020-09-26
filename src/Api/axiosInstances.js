@@ -11,3 +11,8 @@ export const usersInstance = axios.create({
 export const profileInstance = axios.create({
 	baseURL: `https://social-network.samuraijs.com/api/1.0/profile`
 });
+
+export const authInstance = axios.create({
+	baseURL: 'https://social-network.samuraijs.com/api/1.0/auth/me',
+	withCredentials: true
+});
