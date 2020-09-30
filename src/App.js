@@ -10,6 +10,7 @@ import SidebarContainer from './Components/Sidebar/SidebarContainer';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from './Components/Users/UsersContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
+import Login from './Components/Login/Login';
 
 const App = () => {
     return (
@@ -20,9 +21,10 @@ const App = () => {
                     {<SidebarContainer/>}
                 </div>
                 <div className="app-wrapper-content">
-                    <Route exact path='/Dialogs' render={() => <DialogsContainer/>}/>
-                    <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
-                    <Route path='/Users' render={() => <UsersContainer/>}/>
+                    <Route exact path='/Dialogs' render={() => <DialogsContainer />}/>
+                    <Route path='/Profile/:userId?' render={() => <ProfileContainer />}/>
+                    <Route path='/Users' render={() => <UsersContainer />}/>
+                    <Route path='/Login' render={ Login } />
                     <Route path='/News' render={ News }/>
                     <Route path='/Music' render={ Music }/>
                     <Route path='/Settings' render={ Settings }/>

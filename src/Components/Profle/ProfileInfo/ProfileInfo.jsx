@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ProfileInfo.module.css';
 import Preloader from '../../Common/Preloader/Preloader';
 import defaultAvatar from '../../../assets/images/default-avatar.png';
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile){
@@ -26,6 +27,9 @@ const ProfileInfo = (props) => {
                     </div>
                     <div className={styles.job}>
                        <div>{(props.profile.lookingForAJob)?'В поисках работы...':'Уже нашел работу ))'}</div>
+                    </div>
+                    <div className={styles.status}>
+                        <ProfileStatus status={ props.status } updateStatus={ props.updateStatus }/>
                     </div>
                 </div>
             </div>

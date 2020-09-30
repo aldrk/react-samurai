@@ -9,7 +9,11 @@ export const usersInstance = axios.create({
 });
 
 export const profileInstance = axios.create({
-	baseURL: `https://social-network.samuraijs.com/api/1.0/profile`
+	withCredentials: true,
+	baseURL: `https://social-network.samuraijs.com/api/1.0/profile`,
+	headers: {
+		"API-KEY": '8112da00-08e7-460f-9ca1-c38f0f38120c'
+	}
 });
 
 export const authInstance = axios.create({
