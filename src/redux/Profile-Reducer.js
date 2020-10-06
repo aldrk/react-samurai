@@ -1,7 +1,6 @@
 import {profileAPI} from '../Api/profileAPI';
 
 const ADD_POST = 'ADD-POST';
-const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
 const SET_PROFILE_INFO = 'SET-PROFILE-INFO';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const SET_STATUS = 'SET_STATUS';
@@ -12,7 +11,6 @@ let initialState = {
 		{id: 2, postMessage: 'Is it difficult?', likesCount: 1},
 	],
 	profile: null,
-	newPostText: '',
 	status: '',
 	isFetching: false
 };
@@ -20,22 +18,15 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_POST: {
-			console.log(state.posts)
 			let newPost = {
 				id: state.posts[state.posts.length] + 1,
-				postMessage: state.newPostText,
+				postMessage: action.newPostText,
 				likesCount: 0
 			};
 			return {
 				...state,
 				posts: [...state.posts, newPost],
 				newPostText: ''
-			};
-		}
-		case CHANGE_NEW_POST_TEXT: {
-			return {
-				...state,
-				newPostText: action.newPostText
 			};
 		}
 		case SET_PROFILE_INFO: {
@@ -61,16 +52,13 @@ const profileReducer = (state = initialState, action) => {
 	}
 };
 
-export const addPost = () => {
-	return {type: ADD_POST};
-};
-
-export const changeNewPostText = (newPostText) => {
+export const addPost = (newPostText) => {
 	return {
-		type: CHANGE_NEW_POST_TEXT,
-		newPostText: newPostText
+		type: ADD_POST,
+		newPostText
 	};
 };
+
 
 export const setProfileInfo = (profile) => {
 	return {

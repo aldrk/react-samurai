@@ -1,0 +1,11 @@
+.form{
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.error{
+    color: red;
+    border: 1px solid red;
+}
