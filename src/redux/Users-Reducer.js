@@ -126,7 +126,7 @@ export const toggleIsFetchingFollowing = (userId, status) => {
 	};
 };
 
-export const getUsers = (pageSize, currentPage, flag) => (dispatch) => {
+export const requestUsers = (pageSize, currentPage, flag) => (dispatch) => {
 	dispatch(toggleIsFetching(true));
 	usersAPI.getUsers(pageSize, currentPage)
 		.then(users => {
