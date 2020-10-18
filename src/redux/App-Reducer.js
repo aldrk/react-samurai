@@ -1,6 +1,6 @@
 import {authMe} from "./Auth-Reducer";
 
-const SET_INITIALIZED = 'SET_INITIALIZED';
+const SET_INITIALIZED = 'app/SET_INITIALIZED';
 
 const initialState = {
 	initialized: false
@@ -20,11 +20,9 @@ const appReducer = (state = initialState, action) => {
 
 const initializedSuccess = () => ({type: SET_INITIALIZED});
 
-export const initializeApp = () => (dispatch) => {
-	let me = dispatch(authMe());
-	Promise.all([me]).then(() => {
-		dispatch(initializedSuccess());
-	})
+export const initializeApp = () => async (dispatch) => {
+	await dispatch(authMe());
+	dispatch(initializedSuccess());
 };
 
 export default appReducer;

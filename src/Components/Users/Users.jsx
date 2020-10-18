@@ -2,45 +2,41 @@ import React from 'react';
 import styles from './Users.module.css';
 import defaultAvatar from '../../assets/images/default-avatar.png'
 import {NavLink} from 'react-router-dom';
+import Paginator from './Paginator/Paginator';
 
-const Users = (props) => {
-	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize) / 100;
-	let pages = [];
-	for (let i = 1; i <= pagesCount; i++) {
-		pages.push(i);
-	}
+const Users = ({totalUsersCount, pageSize, followThunk, unfollowThunk, currentPage, onChangingPage, users, isFetchingFollowing}) => {
 	const follow = (userId) => {
-		props.followThunk(userId);
+		followThunk(userId);
 	};
 	const unfollow = (userId) => {
-		props.unfollowThunk(userId);
+		unfollowThunk(userId);
 	};
 	return (<div className={styles.users}>
-			<div className={styles.pagination}>
-				{
-					pages.map(p => {
-						return <span key={p}
-									 className={`${styles.page} ${(p === props.currentPage) && styles.active}`}
-									 onClick={() => {
-										 props.onChangingPage(p)
-									 }}>{p}</span>
-					})
-				}
-			</div>
+			<Paginator totalUsersCount={totalUsersCount}
+					   pageSize={pageSize}
+					   currentPage={currentPage}
+					   onChangingPage={onChangingPage}
+			/>
 			{
-				props.users.map(user => <div className={styles.user} key={user.id}>
+				users.map(user => <div className={styles.user} key={user.id}>
 						<div className={styles.avatarAndButtons}>
 							<NavLink to={`/Profile/${user.id}`}>
-								<img src={(user.photos.small) === null ? defaultAvatar : user.photos.small} alt="avatar"/>
+								<img
+									src={(user.photos.small) === null ? defaultAvatar : user.photos.small}
+									alt="avatar"/>
 							</NavLink>
 							{
 								user.followed
-									? <button disabled={!!props.isFetchingFollowing.find(id => id === user.id)} onClick={() => {
-										unfollow(user.id)
-									}}>Unfollow</button>
-									: <button disabled={!!props.isFetchingFollowing.find(id => id === user.id)} onClick={() => {
-										follow(user.id)
-									}}>Follow</button>
+									?
+									<button disabled={!!isFetchingFollowing.find(id => id === user.id)}
+											onClick={() => {
+												unfollow(user.id)
+											}}>Unfollow</button>
+									:
+									<button disabled={!!isFetchingFollowing.find(id => id === user.id)}
+											onClick={() => {
+												follow(user.id)
+											}}>Follow</button>
 							}
 						</div>
 						<div className={styles.mainInfoWrapper}>

@@ -26,7 +26,8 @@ const mapStateToProps = (state) => {
 
 class UsersAPIContainer extends React.Component {
 	render() {
-		return (this.props.isFetching? <Preloader/>: <Users
+		if (this.props.isFetching) return <Preloader/>
+		return <Users
 			totalUsersCount={this.props.totalUsersCount}
 			pageSize={this.props.pageSize}
 			currentPage={this.props.currentPage}
@@ -37,7 +38,7 @@ class UsersAPIContainer extends React.Component {
 			toggleIsFetchingFollowing={this.props.toggleIsFetchingFollowing}
 			followThunk={this.props.followThunk}
 			unfollowThunk={this.props.unfollowThunk}
-		/>)
+		/>
 	};
 	componentDidMount() {
 		this.props.getUsers(this.props.pageSize, this.props.currentPage, 'get');

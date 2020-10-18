@@ -9,8 +9,7 @@ import {maxLengthValidationCreator, minLengthValidationCreator} from "../../util
 let minLength1 = minLengthValidationCreator(4);
 let maxLength150 = maxLengthValidationCreator(150);
 
-const DialogsForm = (props) => {
-    const {handleSubmit} = props;
+const DialogsForm = ({handleSubmit}) => {
     return(
         <form onSubmit={handleSubmit}>
             <Field validate={[minLength1, maxLength150]} name='message' placeholder='Write your message...' component={Textarea}/>
@@ -23,14 +22,14 @@ const DialogsReduxFrom = reduxForm({
     form: 'dialogs'
 })(DialogsForm);
 
-const Dialogs = (props) => {
-    let dialogsComponents = props.dialogs.map( d => <DialogItem id={ d.id } name={ d.name } key={ d.id }/>);
-    let messageComponents = props.messages.map( m => <Message id={ m.id } message={ m.message } key={ m.id }/>);
+const Dialogs = ({dialogs, messages, addMessage, reset}) => {
+    let dialogsComponents = dialogs.map( d => <DialogItem id={ d.id } name={ d.name } key={ d.id }/>);
+    let messageComponents = messages.map( m => <Message id={ m.id } message={ m.message } key={ m.id }/>);
 
-
-    const addMessage = (data) => {
-        props.addMessage(data.message);
-    }
+    const addMessageHandler = (data) => {
+        addMessage(data.message);
+        reset('dialogs');
+    };
 
     return (
         <div className={ styles.dialogs }>
@@ -41,7 +40,7 @@ const Dialogs = (props) => {
                 { messageComponents }
             </div>
             <div className={ styles.newMessage }>
-                <DialogsReduxFrom onSubmit={addMessage}/>
+                <DialogsReduxFrom onSubmit={ addMessageHandler }/>
             </div>
         </div>
     );
